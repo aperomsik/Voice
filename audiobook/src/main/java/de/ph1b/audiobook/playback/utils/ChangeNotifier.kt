@@ -56,9 +56,10 @@ class ChangeNotifier(private val mediaSession: MediaSessionCompat) {
     val bookName = book.name
     val chapterName = c.name
     val author = book.author
+    val artist = c.artist
     val position = book.time
 
-    context.sendBroadcast(what.broadcastIntent(author, bookName, chapterName, playState, position))
+    context.sendBroadcast(what.broadcastIntent(artist, bookName, chapterName, playState, position))
 
     //noinspection ResourceType
     playbackStateBuilder.setState(playState.playbackStateCompat, position.toLong(), book.playbackSpeed)
@@ -91,7 +92,7 @@ class ChangeNotifier(private val mediaSession: MediaSessionCompat) {
         .putString(MediaMetadataCompat.METADATA_KEY_TITLE, chapterName)
         .putString(MediaMetadataCompat.METADATA_KEY_ALBUM, bookName)
         .putString(MediaMetadataCompat.METADATA_KEY_ALBUM_ARTIST, author)
-        .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, author)
+        .putString(MediaMetadataCompat.METADATA_KEY_ARTIST, artist)
         .putString(MediaMetadataCompat.METADATA_KEY_AUTHOR, author)
         .putString(MediaMetadataCompat.METADATA_KEY_COMPOSER, author)
         .putString(MediaMetadataCompat.METADATA_KEY_GENRE, "Audiobook")

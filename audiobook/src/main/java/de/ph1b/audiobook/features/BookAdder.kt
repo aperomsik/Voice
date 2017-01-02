@@ -276,7 +276,7 @@ import javax.inject.Singleton
     for (f in containingFiles) {
       val result = MediaAnalyzer.compute(f)
       if (result.duration > 0) {
-        containingMedia.add(Chapter(f, result.chapterName, result.duration))
+        containingMedia.add(Chapter(f, result.chapterName, result.duration, result.author))
       }
       throwIfStopRequested()
     }

@@ -11,12 +11,14 @@ object ChapterTable {
   const val DURATION = "chapterDuration"
   const val NAME = "chapterName"
   const val PATH = "chapterPath"
+  const val ARTIST = "chapterArtist"
   const val TABLE_NAME = "tableChapters"
   const val BOOK_ID = "bookId"
   private const val CREATE_TABLE = "CREATE TABLE $TABLE_NAME ( " +
     "  $DURATION INTEGER NOT NULL, " +
     "  $NAME TEXT NOT NULL, " +
     "  $PATH TEXT NOT NULL, " +
+    "  $ARTIST TEXT, " +
     "  $BOOK_ID INTEGER NOT NULL, " +
     "  FOREIGN KEY ( $BOOK_ID ) REFERENCES ${BookTable.TABLE_NAME} ( ${BookTable.ID} )" +
     " )"

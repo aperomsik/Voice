@@ -43,14 +43,16 @@ class BookStorage
       val bookType: String = string(BookTable.TYPE)
 
       val chapters = db.query(table = ChapterTable.TABLE_NAME,
-        columns = listOf(ChapterTable.NAME, ChapterTable.DURATION, ChapterTable.PATH),
+        columns = listOf(ChapterTable.NAME, ChapterTable.DURATION,
+                ChapterTable.PATH, ChapterTable.ARTIST),
         selection = "${ChapterTable.BOOK_ID} =?",
         selectionArgs = listOf(bookId))
         .mapRows {
           val name: String = string(ChapterTable.NAME)
           val duration: Int = int(ChapterTable.DURATION)
           val path: String = string(ChapterTable.PATH)
-          Chapter(File(path), name, duration)
+          val artist: String? = stringNullable(ChapterTable.ARTIST)
+          Chapter(File(path), name, duration, artist)
         }
 
       if (chapters.find { it.file == currentFile } == null) {
@@ -87,6 +89,7 @@ class BookStorage
   private fun Chapter.toContentValues(bookId: Long) = ContentValues().apply {
     put(ChapterTable.DURATION, duration)
     put(ChapterTable.NAME, name)
+    put(ChapterTable.ARTIST, artist)
     put(ChapterTable.PATH, file.absolutePath)
     put(ChapterTable.BOOK_ID, bookId)
   }
