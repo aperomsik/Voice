@@ -18,6 +18,7 @@ data class Chapter(
   @PrimaryKey
   val id: ChapterId,
   val name: String?,
+  val author: String?,
   val duration: Long,
   val fileLastModified: Instant,
   val markData: List<MarkData>,

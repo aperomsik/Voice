@@ -27,6 +27,7 @@ class ChapterParser
             duration = metaData.duration,
             fileLastModified = Instant.ofEpochMilli(file.lastModified),
             name = metaData.chapterName,
+            author = metaData.author,
             markData = metaData.chapters,
           )
         }
