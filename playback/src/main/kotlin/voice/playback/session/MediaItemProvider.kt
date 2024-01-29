@@ -140,7 +140,7 @@ class MediaItemProvider
     isPlayable = true,
     sourceUri = chapter.id.toUri(),
     imageUri = content.cover?.toProvidedUri(),
-    artist = content.author,
+    artist = chapter.author ?: content.author,
     mediaType = MediaType.AudioBookChapter,
   )
 
