@@ -11,9 +11,9 @@ plugins {
   id("kotlin-kapt")
   alias(libs.plugins.kotlin.serialization)
   alias(libs.plugins.anvil)
-  alias(libs.plugins.crashlytics)
+  alias(libs.plugins.crashlytics) apply false
   alias(libs.plugins.googleServices) apply false
-  alias(libs.plugins.playPublish)
+  alias(libs.plugins.playPublish) 
 }
 
 if (file("google-services.json").exists()) {
